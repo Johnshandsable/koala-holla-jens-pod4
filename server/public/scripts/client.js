@@ -6,10 +6,11 @@ $(document).ready(function () {
   setupClickListeners();
   // load existing koalas on page load
   getKoalas();
+  deleteKoala();
 }); // end doc ready
 
 function setupClickListeners() {
-  $('#deleteBtn').on('click', deleteKoala());
+  //$('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -22,7 +23,7 @@ function setupClickListeners() {
       readyForTransfer: 'testName',
       notes: 'testName',
     };
-    // call saveKoala with the new obejct
+    // call saveKoala with the new object
     saveKoala(koalaToSend);
   });
 }
