@@ -35,7 +35,7 @@ feature-pool
 
 feature-sql
 
-- [ ] create db
-  - [ ] create table script
-  - [ ] create test data insert
-  - [ ] create delete table script
+- [x] create db
+  - [x] create table script
+  - [x] create test data insert
+  - [x] create delete table script
