@@ -29,7 +29,6 @@ function setupClickListeners() {
 
 function getKoalas() {
   console.log('in getKoalas');
-
   // ajax call to server to get koalas
 } // end getKoalas
 
@@ -37,6 +36,25 @@ function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
 }
+
+
+// adds a koala to the database
+function addKoala(koalaToAdd) {
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koala,
+  })
+    .then(function (response) {
+      console.log('Response from server.', response);
+      // refreshKoalaTable(); will have a function here.
+    })
+    .catch(function (error) {
+      console.log('Error in POST', error);
+      alert(
+        'Unable to add koalas information at this time. Please try again later.'
+      );
+    });
 
 //-Michael delete function
 function deleteKoala(params) {
