@@ -5,7 +5,6 @@ const koalaRouter = express.Router();
 // DB CONNECTION
 const pool = require('../modules/pool');
 
-// console.log(pool);
 
 // ROUTE WILL BE /koalas FOR ALL METHODS
 // GET
