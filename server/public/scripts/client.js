@@ -39,8 +39,16 @@ function getKoalas() {
     //append to DOM
     for (let i = 0; i < response.length; i++) {
       $('#viewKoalas').append(`
-      
-      
+        <tr>
+          <td>${response[i].name}</td>
+          <td>${response[i].age}</td>
+          <td>${response[i].gender}</td>
+          <td>${response[i].readyForTransfer}</td>
+          <td>${response[i].notes}</td>
+          <td>
+            <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
+          </td>
+        </tr>
       `);
     }
   });
