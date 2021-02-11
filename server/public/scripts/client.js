@@ -51,7 +51,7 @@ function deleteKoala(params) {
     //         <th>Ready for Transfer</th>
     //         <th>Notes</th>
     method: 'DELETE',
-    url: '/id',
+    url: '`/koalas/${koalaID}',
     //data isn't used
   })
     .then(function () {
