@@ -1,17 +1,17 @@
-console.log( 'js' );
+console.log('js');
 
-$( document ).ready( function(){
-  console.log( 'JQ' );
+$(document).ready(function () {
+  console.log('JQ');
   // Establish Click Listeners
-  setupClickListeners()
+  setupClickListeners();
   // load existing koalas on page load
   getKoalas();
-
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
+  $('#deleteBtn').on('click', deleteKoala());
+  $('#addButton').on('click', function () {
+    console.log('in addButton on click');
     // get user input and put in an object
     // NOT WORKING YET :(
     // using a test object
@@ -23,18 +23,43 @@ function setupClickListeners() {
       notes: 'testName',
     };
     // call saveKoala with the new obejct
-    saveKoala( koalaToSend );
-  }); 
+    saveKoala(koalaToSend);
+  });
 }
 
-function getKoalas(){
-  console.log( 'in getKoalas' );
+function getKoalas() {
+  console.log('in getKoalas');
+
   // ajax call to server to get koalas
-  
 } // end getKoalas
 
-function saveKoala( newKoala ){
-  console.log( 'in saveKoala', newKoala );
+function saveKoala(newKoala) {
+  console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
- 
+}
+
+//-Michael delete function
+function deleteKoala(params) {
+  console.log('in deleteKoala');
+
+  $.ajax({
+    // /// what to delete
+    //         <th>Name</th>
+    //         <th>Age</th>
+    //         <th>Gender</th>
+    //         <th>Ready for Transfer</th>
+    //         <th>Notes</th>
+    method: 'DELETE',
+    url: '/id',
+    //data isn't used
+  })
+    .then(function () {
+      $(this).parent(tr).remove();
+      res.sendStatus(200);
+    })
+    .catch(function (error) {
+      console.log('error in deleteBtn ajax', error);
+      return;
+    });
+  //want to delete koalaToSend object
 }
