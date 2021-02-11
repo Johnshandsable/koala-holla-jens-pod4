@@ -32,8 +32,23 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-koalaRouter.put('/', (req, res) => {
+koalaRouter.put('/:id', (req, res) => {
+  // PASS IN AN ID
   console.log('SERVER - PUT inside /koalas');
+  let koalaId = req.params.id;
+  let queryText = `UPDATE "koala_inventory" SET "ready_to_transfer"=TRUE WHERE "id"=$1`;
+
+  pool
+    // passes in koalaId to server
+    .query(queryText, [koalaId])
+    .then((result) => {
+      console.log('Updating a koala as ready for transfer with id:', koala);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error updating book`, error);
+      res.sendStatus(500);
+    });
 });
 
 // DELETE
