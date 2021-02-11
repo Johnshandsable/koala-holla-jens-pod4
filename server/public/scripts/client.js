@@ -10,7 +10,6 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $('#deleteBtn').on('click', deleteKoala());
-
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -22,7 +21,6 @@ function setupClickListeners() {
       gender: 'testName',
       readyForTransfer: 'testName',
       notes: 'testName',
-      <button id="deleteBtn">Delete</button>
     };
     // call saveKoala with the new obejct
     saveKoala(koalaToSend);
@@ -42,5 +40,6 @@ function saveKoala(newKoala) {
 
 //-Michael delete function
 function deleteKoala(params) {
-  $;
+  console.log('in deleteKoala');
+  //want to delete koalaToSend object
 }
