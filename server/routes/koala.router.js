@@ -17,7 +17,7 @@ koalaRouter.get('/', (req, res) => {
     .query(sqlQuery)
     .then((result) => {
       // SEND BACK TO CLIENT TO DISPLAY TO DOM
-      res.send(results.rows);
+      res.send(result.rows);
     })
     .catch((error) => {
       // ELSE SEND BACK AN ERROR
@@ -32,9 +32,9 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-koalaRouter.put('/:id', (req, res) => {
+koalaRouter.put('/put/:id', (req, res) => {
   // PASS IN AN ID
-  console.log('SERVER - PUT inside /koalas');
+  console.log('SERVER - PUT inside /koalas/put');
   let koalaId = req.params.id;
   let queryText = `UPDATE "koala_inventory" SET "ready_to_transfer"=TRUE WHERE "id"=$1`;
 
@@ -52,8 +52,23 @@ koalaRouter.put('/:id', (req, res) => {
 });
 
 // DELETE
-koalaRouter.delete('/', (req, res) => {
-  console.log('SERVER - DELETE inside /koalas');
+koalaRouter.delete('/delete/:id', (req, res) => {
+  console.log('SERVER - DELETE inside /koalas/delete');
+  // PASS IN AN ID
+  let koalaId = req.params.id;
+  let queryText = `DELETE FROM "koala_inventory" WHERE "id"=$1`;
+
+  pool
+    // passes in koalaId to server
+    .query(queryText, [koalaId])
+    .then((result) => {
+      console.log('Deleting a koala with id:', koala);
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`Error deleting a koala`, error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = koalaRouter;
