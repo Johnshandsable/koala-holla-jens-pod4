@@ -40,15 +40,17 @@ function saveKoala(newKoala) {
 function addKoala(koalaToAdd) {
   $.ajax({
     type: 'POST',
-    url: '/koala',
+    url: '/koalas',
     data: koala,
   })
     .then(function (response) {
       console.log('Response from server.', response);
-      refreshBooks();
+      // refreshKoalaTable(); will have a function here.
     })
     .catch(function (error) {
       console.log('Error in POST', error);
-      alert('Unable to add book at this time. Please try again later.');
+      alert(
+        'Unable to add koalas information at this time. Please try again later.'
+      );
     });
 }
