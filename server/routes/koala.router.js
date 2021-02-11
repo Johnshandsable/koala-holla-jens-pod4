@@ -3,15 +3,11 @@ const koalaRouter = express.Router();
 
 // DB CONNECTION
 
-
 // GET
-
 
 // POST
 
-
 // PUT
-
 
 // DELETE
 
