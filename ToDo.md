@@ -8,13 +8,19 @@ feature-koala-router
 
 ## Zack
 
+feature-post
+
 - [ ] Client POST $.ajax
 
 ## Jason
 
+feature-get
+
 - [ ] Client GET $.ajax
 
 ## Michael
+
+feature-delete-ajax
 
 - [ ] Client DELETE $.ajax
 
@@ -22,10 +28,10 @@ feature-koala-router
 
 feature-pool
 
-- [ ] pool
-  - [ ] create modules directory
-  - [ ] create pool.js
-  - [ ] export pool.js
+- [x] pool
+  - [x] create modules directory
+  - [x] create pool.js
+  - [x] export pool.js
 
 feature-sql
 
