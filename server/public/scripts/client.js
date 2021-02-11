@@ -41,5 +41,25 @@ function saveKoala(newKoala) {
 //-Michael delete function
 function deleteKoala(params) {
   console.log('in deleteKoala');
+
+  $.ajax({
+    // /// what to delete
+    //         <th>Name</th>
+    //         <th>Age</th>
+    //         <th>Gender</th>
+    //         <th>Ready for Transfer</th>
+    //         <th>Notes</th>
+    method: 'DELETE',
+    url: '/id',
+    //data isn't used
+  })
+    .then(function () {
+      $(this).parent(tr).remove();
+      res.sendStatus(200);
+    })
+    .catch(function (error) {
+      console.log('error in deleteBtn ajax', error);
+      return;
+    });
   //want to delete koalaToSend object
 }
