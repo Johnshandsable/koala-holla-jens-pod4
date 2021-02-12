@@ -49,7 +49,7 @@ function getKoalas() {
           <td>${response[i].ready_to_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
-            <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
+            <button class="add_koala" data-id="${response[i].id}">Ready For Transfer</button>
           </td>
           <td>
             <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
