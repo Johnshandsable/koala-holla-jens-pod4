@@ -9,6 +9,7 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
+  // EVENT HANDLERS 
   $('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
