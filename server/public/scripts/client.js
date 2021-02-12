@@ -33,7 +33,6 @@ function getKoalas() {
   console.log('in getKoalas');
   $('#viewKoalas').empty();
 
-  // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
     url: '/koalas',
@@ -97,8 +96,10 @@ function transferKoala() {
 }
 
 //-Michael delete function
-function deleteKoala(params) {
-  console.log('in deleteKoala');
+function deleteKoala() {
+  console.log('in delete_Koala');
+  const koalaID = $(this).data('id'); //error, is undefined
+  console.log(koalaID, 'koalaId');
 
   $.ajax({
     // /// what to delete
@@ -108,7 +109,7 @@ function deleteKoala(params) {
     //         <th>Ready for Transfer</th>
     //         <th>Notes</th>
     method: 'DELETE',
-    url: '/id',
+    url: '`/koalas/${koalaID}',
     //data isn't used
   })
     .then(function () {
@@ -119,5 +120,6 @@ function deleteKoala(params) {
       console.log('error in deleteBtn ajax', error);
       return;
     });
+  console.log('random console.log');
   //want to delete koalaToSend object
 }
