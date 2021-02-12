@@ -10,7 +10,14 @@
   "author": "@devjana",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+    "body": "^5.1.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "parser": "^0.1.4",
+=======
     "express": "^4.16.4",
+>>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
     "pg": "^8.5.1"
   }
 }

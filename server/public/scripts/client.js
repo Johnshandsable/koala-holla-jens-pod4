@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   // EVENT HANDLERS 
+
   $('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
@@ -30,7 +31,37 @@ function setupClickListeners() {
 
 function getKoalas() {
   console.log('in getKoalas');
+
+  $('#viewKoalas').empty();
+
   // ajax call to server to get koalas
+  $.ajax({
+    type: 'GET',
+    url: '/koalas',
+  }).then(function (response) {
+    console.log('check response', response);
+    //append to DOM
+    for (let i = 0; i < response.length; i++) {
+      $('#viewKoalas').append(`
+        <tr>
+          <td>${response[i].name}</td>
+          <td>${response[i].age}</td>
+          <td>${response[i].gender}</td>
+          <td>${response[i].readyForTransfer}</td>
+          <td>${response[i].notes}</td>
+          <td>
+          <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
+        </td>
+          <td>
+            <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
+          </td>
+        </tr>
+      `);
+    }
+  });
+
+  // ajax call to server to get koalas
+
 } // end getKoalas
 
 function saveKoala(newKoala) {
