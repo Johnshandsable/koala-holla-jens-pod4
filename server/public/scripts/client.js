@@ -9,11 +9,9 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
-
-  // EVENT HANDLERS 
+  // EVENT HANDLERS
 
   $('#deleteBtn').on('click', deleteKoala());
-
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -48,7 +46,7 @@ function getKoalas() {
           <td>${response[i].name}</td>
           <td>${response[i].age}</td>
           <td>${response[i].gender}</td>
-          <td>${response[i].ready_for_transfer}</td>
+          <td>${response[i].ready_to_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
             <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
@@ -68,13 +66,12 @@ function saveKoala(newKoala) {
   // ajax call to server to get koalas
 }
 
-
 // adds a koala to the database
-function addKoala(koalaToAdd) {
+function addKoala(koalaToAdds) {
   $.ajax({
     type: 'POST',
     url: '/koalas',
-    data: koala,
+    data: koalaToAdds,
   })
     .then(function (response) {
       console.log('Response from server.', response);
