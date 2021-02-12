@@ -86,7 +86,7 @@ koalaRouter.delete('/delete/:id', (req, res) => {
     .query(queryText, [koalaId])
     .then((result) => {
       console.log('Deleting a koala with id:', koalaId);
-      res.sendStatus(201);
+      res.sendStatus(200);
     })
     .catch((error) => {
       console.log(`Error deleting a koala`, error);
