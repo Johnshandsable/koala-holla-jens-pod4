@@ -10,22 +10,27 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   // EVENT HANDLERS
-  $('#transferBtn').on('click', transferKoala);
-  $('#deleteBtn').on('click', deleteKoala);
+  $('.transferBtn').on('click', transferKoala);
+  $('.deleteBtn').on('click', deleteKoala);
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
     // NOT WORKING YET :(
     // using a test object
+
+    /*
+      name: $('#nameIn').val()
+
+    */
     let koalaToSend = {
       name: 'testName',
       age: 'testName',
       gender: 'testName',
-      readyForTransfer: 'testName',
       notes: 'testName',
     };
-    // call saveKoala with the new obejct
-    saveKoala(koalaToSend);
+    // call saveKoala with the new object
+    console.log('this koala is getting sent to the addKoala func', koalaToSend);
+    addKoala(koalaToSend);
   });
 }
 
@@ -39,6 +44,10 @@ function getKoalas() {
   }).then(function (response) {
     console.log('check response', response);
     //append to DOM
+    /*
+    rename add_koala button 
+    rename delete_koala button
+    */
     for (let i = 0; i < response.length; i++) {
       $('#viewKoalas').append(`
         <tr>
@@ -48,10 +57,10 @@ function getKoalas() {
           <td>${response[i].ready_to_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
-            <button class="add_koala" data-id="${response[i].id}">Ready For Transfer</button>
+            <button class="transferBtn" data-id="${response[i].id}">Ready For Transfer</button>
           </td>
           <td>
-            <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
+            <button class="deleteBtn" data-id="${response[i].id}">Delete!</button>
           </td>
         </tr>
       `);
@@ -89,10 +98,13 @@ function transferKoala() {
   $.ajax({
     type: 'PUT',
     url: `/koalas/put/${koalaId}`,
-  }).then(function (response) {
-    $('#ready_to_transfer').val('true');
-    getKoalas();
-  });
+  })
+    .then(function (response) {
+      getKoalas();
+    })
+    .catch(function (error) {
+      console.log('CLIENT - an error occurred ', error);
+    });
 }
 
 //-Michael delete function
@@ -109,16 +121,14 @@ function deleteKoala() {
     //         <th>Ready for Transfer</th>
     //         <th>Notes</th>
     method: 'DELETE',
-    url: '`/koalas/${koalaID}',
+    url: `/koalas/delete/${koalaID}`,
     //data isn't used
   })
-    .then(function () {
-      $(this).parent(tr).remove();
-      res.sendStatus(200);
+    .then(function (response) {
+      console.log('CLIENT - a response', response);
     })
     .catch(function (error) {
-      console.log('error in deleteBtn ajax', error);
-      return;
+      console.log('CLIENT - error in deleteBtn ajax', error);
     });
   console.log('random console.log');
   //want to delete koalaToSend object
