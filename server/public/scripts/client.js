@@ -9,10 +9,9 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
-<<<<<<< HEAD
-=======
+  // EVENT HANDLERS 
+
   $('#deleteBtn').on('click', deleteKoala());
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -32,7 +31,7 @@ function setupClickListeners() {
 
 function getKoalas() {
   console.log('in getKoalas');
-<<<<<<< HEAD
+
   $('#viewKoalas').empty();
 
   // ajax call to server to get koalas
@@ -60,16 +59,14 @@ function getKoalas() {
       `);
     }
   });
-=======
+
   // ajax call to server to get koalas
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
+
 } // end getKoalas
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
-<<<<<<< HEAD
-=======
 }
 
 
@@ -115,5 +112,4 @@ function deleteKoala(params) {
       return;
     });
   //want to delete koalaToSend object
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
 }
