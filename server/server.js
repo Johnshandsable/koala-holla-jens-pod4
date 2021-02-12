@@ -6,6 +6,7 @@ const koalaRouter = require('./routes/koala.router');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('server/public'));
+app.use(bodyParser.json());
 
 // ROUTES
 app.use('/koalas', koalaRouter);
