@@ -34,7 +34,6 @@ function setupClickListeners() {
 
 function getKoalas() {
   console.log('in getKoalas');
-
   $('#viewKoalas').empty();
 
   // ajax call to server to get koalas
@@ -50,11 +49,11 @@ function getKoalas() {
           <td>${response[i].name}</td>
           <td>${response[i].age}</td>
           <td>${response[i].gender}</td>
-          <td>${response[i].readyForTransfer}</td>
+          <td>${response[i].ready_to_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
-          <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
-        </td>
+            <button class="add_koala" data-id="${response[i].id}">Ready For Transfer</button>
+          </td>
           <td>
             <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
           </td>
@@ -62,7 +61,6 @@ function getKoalas() {
       `);
     }
   });
-
   // ajax call to server to get koalas
 } // end getKoalas
 
@@ -89,7 +87,6 @@ function addKoala(koalaToAdds) {
       );
     });
 }
-
 //-Michael delete function
 function deleteKoala() {
   console.log('in delete_Koala');
