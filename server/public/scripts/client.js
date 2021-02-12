@@ -41,7 +41,7 @@ function addKoala(koalaToAdd) {
   $.ajax({
     type: 'POST',
     url: '/koalas',
-    data: koala,
+    data: koalaToAdd,
   })
     .then(function (response) {
       console.log('Response from server.', response);
