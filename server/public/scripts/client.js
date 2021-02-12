@@ -71,11 +71,11 @@ function saveKoala(newKoala) {
 
 
 // adds a koala to the database
-function addKoala(koalaToAdd) {
+function addKoala(koalaToAdds) {
   $.ajax({
     type: 'POST',
     url: '/koalas',
-    data: koala,
+    data: koalaToAdds,
   })
     .then(function (response) {
       console.log('Response from server.', response);
