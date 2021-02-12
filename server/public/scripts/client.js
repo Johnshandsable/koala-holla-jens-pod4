@@ -6,15 +6,12 @@ $(document).ready(function () {
   setupClickListeners();
   // load existing koalas on page load
   getKoalas();
-  deleteKoala();
 }); // end doc ready
 
 function setupClickListeners() {
-  //$('#deleteBtn').on('click', deleteKoala());
   // EVENT HANDLERS
-  $(document).on('click', '.delete_koala', deleteKoala);
-  // EVENT HANDLERS
-
+  $('#transferBtn').on('click', transferKoala);
+  $('#deleteBtn').on('click', deleteKoala);
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -27,7 +24,7 @@ function setupClickListeners() {
       readyForTransfer: 'testName',
       notes: 'testName',
     };
-    // call saveKoala with the new object
+    // call saveKoala with the new obejct
     saveKoala(koalaToSend);
   });
 }
@@ -87,31 +84,40 @@ function addKoala(koalaToAdds) {
       );
     });
 }
-//-Michael delete function
-function deleteKoala() {
-  console.log('in delete_Koala');
-  const koalaID = $(this).data('id');
-  console.log(koalaID, 'koalaId');
 
-  // $.ajax({
-  //   // /// what to delete
-  //   //         <th>Name</th>
-  //   //         <th>Age</th>
-  //   //         <th>Gender</th>
-  //   //         <th>Ready for Transfer</th>
-  //   //         <th>Notes</th>
-  //   method: 'DELETE',
-  //   url: '`/koalas/${koalaID}',
-  //   //data isn't used
-  // })
-  //   .then(function () {
-  //     $(this).parent(tr).remove();
-  //     res.sendStatus(200);
-  //   })
-  //   .catch(function (error) {
-  //     console.log('error in deleteBtn ajax', error);
-  //     return;
-  //   });
-  console.log('random console.log');
+function transferKoala() {
+  const koalaId = $(this).data(`id`);
+  $.ajax({
+    type: 'PUT',
+    url: `/koalas/put/${koalaId}`,
+  }).then(function (response) {
+    $('#ready_to_transfer').val('true');
+    getKoalas();
+  });
+}
+
+//-Michael delete function
+function deleteKoala(params) {
+  console.log('in deleteKoala');
+
+  $.ajax({
+    // /// what to delete
+    //         <th>Name</th>
+    //         <th>Age</th>
+    //         <th>Gender</th>
+    //         <th>Ready for Transfer</th>
+    //         <th>Notes</th>
+    method: 'DELETE',
+    url: '/id',
+    //data isn't used
+  })
+    .then(function () {
+      $(this).parent(tr).remove();
+      res.sendStatus(200);
+    })
+    .catch(function (error) {
+      console.log('error in deleteBtn ajax', error);
+      return;
+    });
   //want to delete koalaToSend object
 }
