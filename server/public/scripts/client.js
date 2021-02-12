@@ -9,7 +9,7 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
-  // EVENT HANDLERS 
+  // EVENT HANDLERS
 
   $('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
@@ -61,14 +61,12 @@ function getKoalas() {
   });
 
   // ajax call to server to get koalas
-
 } // end getKoalas
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
 }
-
 
 // adds a koala to the database
 function addKoala(koalaToAdds) {
@@ -87,6 +85,7 @@ function addKoala(koalaToAdds) {
         'Unable to add koalas information at this time. Please try again later.'
       );
     });
+}
 
 //-Michael delete function
 function deleteKoala(params) {
