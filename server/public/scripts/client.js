@@ -9,10 +9,11 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
-<<<<<<< HEAD
-=======
+
+  // EVENT HANDLERS 
+
   $('#deleteBtn').on('click', deleteKoala());
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
+
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -32,7 +33,6 @@ function setupClickListeners() {
 
 function getKoalas() {
   console.log('in getKoalas');
-<<<<<<< HEAD
   $('#viewKoalas').empty();
 
   // ajax call to server to get koalas
@@ -48,11 +48,11 @@ function getKoalas() {
           <td>${response[i].name}</td>
           <td>${response[i].age}</td>
           <td>${response[i].gender}</td>
-          <td>${response[i].readyForTransfer}</td>
+          <td>${response[i].ready_for_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
-          <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
-        </td>
+            <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
+          </td>
           <td>
             <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
           </td>
@@ -60,16 +60,12 @@ function getKoalas() {
       `);
     }
   });
-=======
   // ajax call to server to get koalas
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
 } // end getKoalas
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
-<<<<<<< HEAD
-=======
 }
 
 
@@ -90,7 +86,7 @@ function addKoala(koalaToAdd) {
         'Unable to add koalas information at this time. Please try again later.'
       );
     });
-
+}
 //-Michael delete function
 function deleteKoala(params) {
   console.log('in deleteKoala');
@@ -115,5 +111,4 @@ function deleteKoala(params) {
       return;
     });
   //want to delete koalaToSend object
->>>>>>> acb7bb6f20e3e996d57ed264e2199b5ab2a09877
 }
