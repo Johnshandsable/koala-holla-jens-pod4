@@ -27,8 +27,12 @@ koalaRouter.get('/', (req, res) => {
 // POST
 koalaRouter.post('/', (req, res) => {
   console.log('SERVER - POST inside /koalas');
+  console.log(req);
   let newKoala = req.body;
+  console.log(req.body);
   console.log(`Adding koala`, newKoala);
+  console.log(newKoala.name);
+  console.log(newKoala.age);
 
   let queryText = `INSERT INTO "koala_inventory" ("name", "gender", "age", "ready_to_transfer", "notes")
                    VALUES ($1, $2, $3, $4, $5);`;

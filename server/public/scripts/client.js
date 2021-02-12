@@ -6,12 +6,15 @@ $(document).ready(function () {
   setupClickListeners();
   // load existing koalas on page load
   getKoalas();
+  deleteKoala();
 }); // end doc ready
 
 function setupClickListeners() {
+  //$('#deleteBtn').on('click', deleteKoala());
+  // EVENT HANDLERS
+  $(document).on('click', '.delete_koala', deleteKoala);
   // EVENT HANDLERS
 
-  $('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -24,14 +27,13 @@ function setupClickListeners() {
       readyForTransfer: 'testName',
       notes: 'testName',
     };
-    // call saveKoala with the new obejct
+    // call saveKoala with the new object
     saveKoala(koalaToSend);
   });
 }
 
 function getKoalas() {
   console.log('in getKoalas');
-
   $('#viewKoalas').empty();
 
   // ajax call to server to get koalas
@@ -47,11 +49,11 @@ function getKoalas() {
           <td>${response[i].name}</td>
           <td>${response[i].age}</td>
           <td>${response[i].gender}</td>
-          <td>${response[i].readyForTransfer}</td>
+          <td>${response[i].ready_to_transfer}</td>
           <td>${response[i].notes}</td>
           <td>
-          <button class="add_koala" data-id="${response[i].id}">Add Koala!</button>
-        </td>
+            <button class="add_koala" data-id="${response[i].id}">Ready For Transfer</button>
+          </td>
           <td>
             <button class="delete_koala" data-id="${response[i].id}">Delete!</button>
           </td>
@@ -59,7 +61,6 @@ function getKoalas() {
       `);
     }
   });
-
   // ajax call to server to get koalas
 } // end getKoalas
 
@@ -86,29 +87,31 @@ function addKoala(koalaToAdds) {
       );
     });
 }
-
 //-Michael delete function
-function deleteKoala(params) {
-  console.log('in deleteKoala');
+function deleteKoala() {
+  console.log('in delete_Koala');
+  const koalaID = $(this).data('id');
+  console.log(koalaID, 'koalaId');
 
-  $.ajax({
-    // /// what to delete
-    //         <th>Name</th>
-    //         <th>Age</th>
-    //         <th>Gender</th>
-    //         <th>Ready for Transfer</th>
-    //         <th>Notes</th>
-    method: 'DELETE',
-    url: '/id',
-    //data isn't used
-  })
-    .then(function () {
-      $(this).parent(tr).remove();
-      res.sendStatus(200);
-    })
-    .catch(function (error) {
-      console.log('error in deleteBtn ajax', error);
-      return;
-    });
+  // $.ajax({
+  //   // /// what to delete
+  //   //         <th>Name</th>
+  //   //         <th>Age</th>
+  //   //         <th>Gender</th>
+  //   //         <th>Ready for Transfer</th>
+  //   //         <th>Notes</th>
+  //   method: 'DELETE',
+  //   url: '`/koalas/${koalaID}',
+  //   //data isn't used
+  // })
+  //   .then(function () {
+  //     $(this).parent(tr).remove();
+  //     res.sendStatus(200);
+  //   })
+  //   .catch(function (error) {
+  //     console.log('error in deleteBtn ajax', error);
+  //     return;
+  //   });
+  console.log('random console.log');
   //want to delete koalaToSend object
 }
