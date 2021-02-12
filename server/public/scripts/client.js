@@ -115,5 +115,6 @@ function deleteKoala() {
   //     console.log('error in deleteBtn ajax', error);
   //     return;
   //   });
+  console.log('random console.log');
   //want to delete koalaToSend object
 }
