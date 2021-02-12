@@ -9,6 +9,7 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
+  $('#deleteBtn').on('click', deleteKoala());
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
@@ -36,6 +37,7 @@ function saveKoala(newKoala) {
   // ajax call to server to get koalas
 }
 
+
 // adds a koala to the database
 function addKoala(koalaToAdd) {
   $.ajax({
@@ -53,4 +55,29 @@ function addKoala(koalaToAdd) {
         'Unable to add koalas information at this time. Please try again later.'
       );
     });
+
+//-Michael delete function
+function deleteKoala(params) {
+  console.log('in deleteKoala');
+
+  $.ajax({
+    // /// what to delete
+    //         <th>Name</th>
+    //         <th>Age</th>
+    //         <th>Gender</th>
+    //         <th>Ready for Transfer</th>
+    //         <th>Notes</th>
+    method: 'DELETE',
+    url: '/id',
+    //data isn't used
+  })
+    .then(function () {
+      $(this).parent(tr).remove();
+      res.sendStatus(200);
+    })
+    .catch(function (error) {
+      console.log('error in deleteBtn ajax', error);
+      return;
+    });
+  //want to delete koalaToSend object
 }
