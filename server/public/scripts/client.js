@@ -36,7 +36,6 @@ function getKoalas() {
   console.log('in getKoalas');
   $('#viewKoalas').empty();
 
-  // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
     url: '/koalas',
@@ -90,28 +89,28 @@ function addKoala(koalaToAdds) {
 //-Michael delete function
 function deleteKoala() {
   console.log('in delete_Koala');
-  const koalaID = $(this).data('id');
+  const koalaID = $(this).data('id'); //error, is undefined
   console.log(koalaID, 'koalaId');
 
-  // $.ajax({
-  //   // /// what to delete
-  //   //         <th>Name</th>
-  //   //         <th>Age</th>
-  //   //         <th>Gender</th>
-  //   //         <th>Ready for Transfer</th>
-  //   //         <th>Notes</th>
-  //   method: 'DELETE',
-  //   url: '`/koalas/${koalaID}',
-  //   //data isn't used
-  // })
-  //   .then(function () {
-  //     $(this).parent(tr).remove();
-  //     res.sendStatus(200);
-  //   })
-  //   .catch(function (error) {
-  //     console.log('error in deleteBtn ajax', error);
-  //     return;
-  //   });
+  $.ajax({
+    // /// what to delete
+    //         <th>Name</th>
+    //         <th>Age</th>
+    //         <th>Gender</th>
+    //         <th>Ready for Transfer</th>
+    //         <th>Notes</th>
+    method: 'DELETE',
+    url: '`/koalas/${koalaID}',
+    //data isn't used
+  })
+    .then(function () {
+      $(this).parent(tr).remove();
+      res.sendStatus(200);
+    })
+    .catch(function (error) {
+      console.log('error in deleteBtn ajax', error);
+      return;
+    });
   console.log('random console.log');
   //want to delete koalaToSend object
 }
