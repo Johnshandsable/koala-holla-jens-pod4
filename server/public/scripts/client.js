@@ -10,26 +10,23 @@ $(document).ready(function () {
 }); // end doc ready
 
 function setupClickListeners() {
-<<<<<<< HEAD
   //$('#deleteBtn').on('click', deleteKoala());
-  // EVENT HANDLERS 
-  $(document).on('click', '.delete_koala', deleteKoala);
-=======
   // EVENT HANDLERS
->>>>>>> 2985eb440bbedd685e2e84c54a98319fe81b375d
+  $(document).on('click', '.delete_koala', deleteKoala);
+  // EVENT HANDLERS
 
   $('#addButton').on('click', function () {
     console.log('in addButton on click');
     // get user input and put in an object
     // NOT WORKING YET :(
-      // using a test object
-      let koalaToSend = {
-        name: 'testName',
-        age: 'testName',
-        gender: 'testName',
-        readyForTransfer: 'testName',
-        notes: 'testName',
-      };
+    // using a test object
+    let koalaToSend = {
+      name: 'testName',
+      age: 'testName',
+      gender: 'testName',
+      readyForTransfer: 'testName',
+      notes: 'testName',
+    };
     // call saveKoala with the new object
     saveKoala(koalaToSend);
   });
@@ -96,9 +93,8 @@ function addKoala(koalaToAdds) {
 //-Michael delete function
 function deleteKoala() {
   console.log('in delete_Koala');
-  const koalaID = $(this).data("id");
-  console.log(koalaID, "koalaId");
-
+  const koalaID = $(this).data('id');
+  console.log(koalaID, 'koalaId');
 
   // $.ajax({
   //   // /// what to delete
